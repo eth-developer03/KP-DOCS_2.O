@@ -1,0 +1,16 @@
+.hiddenv {
+  /* overflow: hidden; */
+  /* transform: translateX(-500px); */
+  display: none;
+}
+.dispnav {
+  /* transform: translateX(550px); */
+  display: block;
+}
+.hin {
+  height: 100vh;
+}
+.active-link {
+  color: rgb(200, 160, 82);
+  font-weight: bold;
+}
