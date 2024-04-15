@@ -2,6 +2,8 @@ import React from 'react';
 import SignIn from './Components/SignIn';
 import Editor from './Components/Editor';
 import LogIn from './Components/LogIn';
+import Bot from './Components/Bot';
+import CustomPricingCard from './Components/PriceCard';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,6 +21,8 @@ function App() {
 
         <Route path="/documents/:id" element={<Editor />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/chatbot" element={<Bot />} />
+        <Route path="/price" element={<CustomPricingCard />} />
       </Routes>
     </Router>
   );

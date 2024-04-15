@@ -46,6 +46,32 @@ function Editor() {
   // Initialize the Quill editor when the component mounts
 
   useEffect(() => {
+    // Append the Botpress Webchat script
+    const webchatScript = document.createElement('script');
+    webchatScript.src = 'https://cdn.botpress.cloud/webchat/v1/inject.js';
+    webchatScript.defer = true;
+    // webchatScript.async = true;
+    // webchatScript.crossOrigin = 'anonymous';
+    document.body.appendChild(webchatScript);
+
+    // Append the configuration script
+    const configScript = document.createElement('script');
+    configScript.async = true;
+
+    configScript.src =
+      'https://mediafiles.botpress.cloud/0f4d808f-f0ed-4ee3-a448-9d4b9539426f/webchat/config.js';
+    configScript.defer = true;
+    // configScript.crossOrigin = 'anonymous';
+
+    document.body.appendChild(configScript);
+
+    return () => {
+      // document.body.removeChild(webchatScript);
+      document.body.removeChild(configScript);
+    };
+  }, []);
+
+  useEffect(() => {
     return () => {
       const q = new Quill('.try', {
         theme: 'snow',

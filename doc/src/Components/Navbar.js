@@ -74,7 +74,22 @@ function Navbar(props) {
               SIGN IN
             </NavLink>
           </div>
-
+          <div>
+            <NavLink
+              to="/chatbot"
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              GUIDE BOT
+            </NavLink>
+          </div>
+          <div>
+            <NavLink
+              to="/price"
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              PRICING
+            </NavLink>
+          </div>
           <div>
             <NavLink
               to="/login"
@@ -110,7 +125,15 @@ function Navbar(props) {
             to="/"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
-            SignIn
+            SIGN IN
+          </NavLink>
+        </div>
+        <div>
+          <NavLink
+            to="/chatbot"
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
+            GUIDE BOT
           </NavLink>
         </div>
         <div>
@@ -118,8 +141,15 @@ function Navbar(props) {
             to="/login"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
-            LogIn
+            LOG IN
           </NavLink>
+        </div>
+        <div className="pr-4">
+          {location.pathname === `/document/${props.loc}` && (
+            <li>
+              <button onClick={loggingOut}>Log out</button>
+            </li>
+          )}
         </div>
 
         {/* <div className="pr-4">

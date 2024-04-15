@@ -5,18 +5,40 @@ const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+require('dotenv').config();
+
 const cookieParser = require('cookie-parser');
 const nodeMailer = require('nodemailer');
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
 const verify = require('./middleware/verify');
+const {
+  payprocess,
+  paySuccess,
+  payCancel,
+} = require('./payment/paymentBackend');
 
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 var cors = require('cors');
+
 // Set up CORS, cookies middleware
 app.use(cors());
-// app.use(cookieParser());
+app.use(cookieParser());
 // Set up body parser middleware
 app.use(bodyParser.json());
+
+app.post('/pay', payprocess);
+
+app.get('/success', paySuccess);
+app.get('/cancel', payCancel);
+
+app.get('/new', (req, res) => {
+  res.send('new mw');
+});
 // Create HTTP server using Express
 const server = require('http').createServer(app);
 // Import socket.io and configure it to work with the HTTP server
@@ -40,6 +62,7 @@ async function main() {
     console.error('MongoDB connection error:', error);
   }
 }
+//try payemnt
 
 // Define default value for documents
 
@@ -86,20 +109,6 @@ var nodeObject = {
   },
 };
 var trans = nodeMailer.createTransport(nodeObject, { debug: true });
-
-//verify method
-// const verify = async (req, res, next) => {
-//   var token = req.header('authorization');
-//   if (typeof token !== undefined) {
-//     const token2 = token.split(' ');
-//     const bearer = token2[1];
-//     req.token = bearer;
-
-//     next();
-//   } else {
-//     res.send('error in verifying');
-//   }
-// };
 
 // Handle POST requests to create a new user
 app.post('/post', async (req, res) => {
