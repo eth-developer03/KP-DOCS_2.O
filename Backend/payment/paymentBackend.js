@@ -52,10 +52,7 @@ const payprocess = (req, res) => {
       for (let i = 0; i < payment.links.length; i++) {
         if (payment.links[i].rel === 'approval_url') {
           res.json({ approval_url: payment.links[i].href });
-
-          console.log('here');
         }
-        console.log('Not here');
       }
     }
   });

@@ -202,77 +202,9 @@ app.post('/post', async (req, res) => {
         }
       }
     );
-
-    // const final = Users({
-    //   id: id,
-    //   username: usernameI,
-    //   email: email,
-    //   password: hash,
-    // });
-
-    // const admitted = await final.save();
-
-    // console.log('user is saved');
   } catch (e) {
     return res.send('Invalid Data is Entered !!!');
   }
-  // jwt.sign(
-  //   Initial,
-  //   process.env.ACCESS_SECRET,
-  //   { expiresIn: '1d' },
-  //   (err, token) => {
-  //     if (err) {
-  //       // Handle error if JWT signing fails
-
-  //       res.status(500).json({ error: 'Failed to sign JWT token' });
-  //     } else {
-  //       // Set the token as a cookie named 'token'
-  //       // res.cookie('Accesstoken', token, {
-  //       //   maxAge: 86400000,
-  //       //   httpOnly: true,
-  //       //   secure: true,
-  //       // }); // maxAge is in milliseconds, 1 day = 24 * 60 * 60 * 1000 = 86400000
-  //       // Send response
-  //       res.json({
-  //         Token: token,
-  //         admitted,
-  //       });
-  //     }
-  //   }
-  // );
-
-  // jwt.sign(
-  //   Initial,
-  //   process.env.REFRESH_SECRET,
-  //   { expiresIn: '3d' },
-  //   (err, rtoken) => {
-  //     if (err) {
-  //       // Handle error if JWT signing fails
-
-  //       res.status(500).json({ error: 'Failed to sign JWT token' });
-  //     } else {
-  //       // Set the token as a cookie named 'token'
-  //       // res.cookie('Refreshtoken', rtoken, {
-  //       //   maxAge: 86400000,
-  //       //   httpOnly: true,
-  //       //   secure: true,
-  //       // });
-  //       // maxAge is in milliseconds, 1 day = 24 * 60 * 60 * 1000 = 86400000
-
-  //       res.status(201).json({
-  //         RefreshToken: rtoken,
-  //         Message: 'Refresh Token Is sent!',
-  //       });
-
-  //       // Send response
-  //       // res.json({
-  //       //   admitted,
-  //       // });
-  //     }
-  //   }
-  // );
-
-  // res.send(admitted);
 });
 
 //login method
