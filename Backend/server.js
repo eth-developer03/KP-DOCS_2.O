@@ -37,7 +37,7 @@ app.get('/success', paySuccess);
 app.get('/cancel', payCancel);
 
 app.get('/new', (req, res) => {
-  res.send('new mw');
+  res.send('new me');
 });
 // Create HTTP server using Express
 const server = require('http').createServer(app);

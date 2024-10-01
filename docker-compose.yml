@@ -1,0 +1,35 @@
+version: '3'
+services:
+  backend:
+    build: 
+      context: ./Backend  # Updated to reflect the correct folder
+    container_name: backend
+    ports:
+      - "3001:3001"  # Ensure this matches your backend's port
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./Backend:/app
+    command: npm start
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./doc  # Updated to reflect the correct folder
+    container_name: frontend
+    ports:
+      - "3000:3000"  # Expose React frontend on port 3000
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    volumes:
+      - ./doc:/app
+    command: npx serve -s build -l 3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

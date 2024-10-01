@@ -38,7 +38,7 @@ const payprocess = (req, res) => {
           currency: 'USD',
           total: cost,
         },
-        description: 'This is the payment description.',
+        description: 'You have choosen the Best plan for you !',
       },
     ],
   };
@@ -59,8 +59,6 @@ const payprocess = (req, res) => {
 };
 
 const paySuccess = (req, res) => {
-  console.log('start of success start');
-
   try {
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
@@ -88,7 +86,7 @@ const paySuccess = (req, res) => {
           console.log(JSON.stringify(payment));
           console.log('successFull');
 
-          res.send('payment is successful X2');
+          res.send('Payment is successful !!!! ');
         }
       }
     );
