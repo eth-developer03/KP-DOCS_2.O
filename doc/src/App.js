@@ -11,16 +11,20 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { v4 as uuidV4 } from 'uuid';
-
+import Log from './Components/Log';
+import Sign from './Components/Sign';
 function App() {
   return (
     <Router>
       <Routes>
         {/* <Route path="/" element={<Navigate to={`/documents/${uuidV4()}`} />} /> */}
-        <Route path="/" element={<SignIn />} />
+        {/* <Route path="/" element={<SignIn />} /> */}
+        <Route path="/" element={<Sign />} />
 
         <Route path="/documents/:id" element={<Editor />} />
-        <Route path="/login" element={<LogIn />} />
+        {/* <Route path="/login" element={<LogIn />} /> */}
+        <Route path="/login" element={<Log />} />
+
         <Route path="/chatbot" element={<Bot />} />
         <Route path="/price" element={<CustomPricingCard />} />
       </Routes>
